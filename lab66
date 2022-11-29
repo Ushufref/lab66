@@ -1,0 +1,31 @@
+class Car:
+    def __init__(self, capacity, consum, speed):
+        self.capacity = capacity
+        self.consum = consum
+        self.speed = speed
+    def len(self):
+        print(str(self.capacity / self.consum) + ' km')
+
+class Bus(Car):
+    def __init__(self, capacity, consum, speed, count_of_people, fare):
+        super().__init__(capacity, consum, speed)
+        self.count_of_people =  count_of_people
+        self.fare = fare
+    def ratio(self):
+        print('соотношение числа пассажиров к количеству топлива на 250 км' + str(self.count_of_people/(250 * self.consum)))
+
+class Truck(Car):
+    def __init__(self, capacity, consum, speed, weight):
+        super().__init__(capacity, consum, speed)
+        self.weight = weight
+    def ratio1(self):
+        print('соотношение веса груза к количеству топлива на 250 км' + str(self.weight/(250 * self.consum)))
+    def __add__(self, other):
+        return self.weight + other.weight
+
+mers = Car(100, 10, 50)
+print('пройденное расстояние до полного опустошения бака: ')
+mers.len()
+fura = Truck(1000, 5, 300, 1500)
+another_fura = Truck(12, 12, 400, 1200)
+print('суммарный вес груза на 2 фурах: ' + str(fura + another_fura))
